@@ -72,7 +72,7 @@ def count():
 @app.route("/song")
 def songs():
     """return all songs"""
-    cursor = db.songs.find()
+    songs = db.songs.find()
 
     return parse_json({"songs": songs}), 200
 
