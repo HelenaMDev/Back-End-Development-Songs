@@ -74,7 +74,7 @@ def songs():
     """return all songs"""
     cursor = db.songs.find()
 
-    return {"songs": json_util.dumps(list(cursor))}, 200
+    return parse_json({"songs": songs}), 200
 
 
 ######################################################################
@@ -86,7 +86,7 @@ def get_song_by_id(id):
     song = db.songs.find_one({"id": id})
 
     if song:
-        return jsonify(json_util.dumps(song))
+        return parse_json(song), 200
 
     return {"message": f"song with id {id} not found"}, 404
 
